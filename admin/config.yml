@@ -6,6 +6,9 @@ backend:
   # Das sagt Decap CMS, dass es Netlify als OAuth-Provider nutzen soll:
   site_id: astounding-sunburst-46c82a.netlify.app  # Ihre Netlify-Subdomain oder Custom Domain
 
+  # 2. Das zwingt das CMS, den Login IMMER über Netlify umzuleiten:
+  base_url: https://astounding-sunburst-46c82a.netlify.app
+
 publish_mode: editorial_workflow
 media_folder: assets/uploads
 public_folder: /assets/uploads
