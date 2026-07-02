@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: OWNER/REPO # TODO: durch das echte GitHub-Repository ersetzen
+  repo: NINI1988/Pool # TODO: durch das echte GitHub-Repository ersetzen
   branch: main
 
 publish_mode: editorial_workflow

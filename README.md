@@ -28,7 +28,7 @@ Das CMS liegt unter `/admin/`. In `admin/config.yml` ist aktuell ein Platzhalter
 ```yaml
 backend:
   name: github
-  repo: OWNER/REPO
+  repo: NINI1988/Pool
   branch: main
 ```
 
@@ -67,4 +67,3 @@ python3 tools/migrate_wordpress.py
 ```
 
 Das Tool überschreibt migrierte Seiten und Beiträge. Manuelle Nacharbeit an migrierten Dateien sollte daher erst nach der letzten Migration passieren oder vorher gesichert werden.
-
