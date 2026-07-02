@@ -1,0 +1,105 @@
+backend:
+  name: github
+  repo: OWNER/REPO # TODO: durch das echte GitHub-Repository ersetzen
+  branch: main
+
+publish_mode: editorial_workflow
+media_folder: assets/uploads
+public_folder: /assets/uploads
+site_url: https://poolbillard-ms.de
+locale: de
+
+collections:
+  - name: pages
+    label: Seiten
+    folder: _pages
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Beschreibung, name: description, widget: text, required: false }
+      - { label: Permalink, name: permalink, widget: string, hint: "Beispiel: /spielplan/" }
+      - { label: Inhalt, name: body, widget: markdown }
+  - name: posts
+    label: News und Beiträge
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    extension: md
+    format: frontmatter
+    fields:
+      - { label: Titel, name: title, widget: string }
+      - { label: Datum, name: date, widget: datetime }
+      - { label: Beschreibung, name: description, widget: text, required: false }
+      - { label: Inhalt, name: body, widget: markdown }
+  - name: data
+    label: Daten
+    files:
+      - label: Navigation
+        name: navigation
+        file: _data/navigation.yml
+        fields:
+          - label: Links
+            name: items
+            widget: list
+            required: false
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: URL, name: url, widget: string }
+      - label: Vereinsdaten
+        name: club
+        file: _data/club.yml
+        fields:
+          - { label: Name, name: name, widget: string }
+          - { label: Untertitel, name: tagline, widget: string, required: false }
+          - { label: Spielort, name: venue, widget: string, required: false }
+          - { label: Adresse, name: address, widget: string, required: false }
+          - { label: E-Mail, name: email, widget: string, required: false }
+      - label: Downloads
+        name: downloads
+        file: _data/downloads.yml
+        fields:
+          - label: Downloads
+            name: items
+            widget: list
+            required: false
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Datei, name: file, widget: file }
+      - label: Bilder
+        name: media
+        file: _data/media.yml
+        fields:
+          - label: Bilder
+            name: items
+            widget: list
+            required: false
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Bild, name: image, widget: image }
+      - label: Termine
+        name: events
+        file: _data/events.yml
+        fields:
+          - label: Termine
+            name: items
+            widget: list
+            required: false
+            fields:
+              - { label: Titel, name: title, widget: string }
+              - { label: Datum, name: date, widget: datetime }
+              - { label: Ort, name: location, widget: string, required: false }
+      - label: Sponsoren
+        name: sponsors
+        file: _data/sponsors.yml
+        fields:
+          - label: Sponsoren
+            name: items
+            widget: list
+            required: false
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: URL, name: url, widget: string, required: false }
+              - { label: Logo, name: logo, widget: image, required: false }
