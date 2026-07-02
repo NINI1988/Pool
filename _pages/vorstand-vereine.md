@@ -6,11 +6,12 @@ description: "Vorstand Funktion Name E-Mail Telefon 1. Vorsitzende Eva Schlüter
 
 ## Vorstand
 
-<div class="table-wrap">
-<table>
-<tbody><tr><td>**Funktion**</td><td>**Name**</td><td>**E-Mail**</td><td>**Telefon**</td></tr><tr><td>**1. Vorsitzende**</td><td>Eva Schlüter</td><td>[eva.schlueter0412@gmail.com](mailto:eva.schlueter0412@gmail.com)</td><td></td></tr><tr><td>**2. Vorsitzender**</td><td>Manuel Wetzel</td><td>[manuelwetzel941@gmail.com](mailto:manuelwetzel941@gmail.com)</td><td>015779771680</td></tr><tr><td>**Kassenwärtin**</td><td>Marion Anfang</td><td>[marion.anfang@gmail.com](mailto:marion.anfang@gmail.com)</td><td></td></tr><tr><td>**Sportwart**</td><td>Florian Siebert</td><td>[fsiebert8@gmail.com](mailto:fsiebert8@gmail.com)</td><td>017638212080</td></tr></tbody>
-</table>
-</div>
+| **Funktion** | **Name** | **E-Mail** | **Telefon** |
+| ---- | -- | ---- | ---- |
+| **1. Vorsitzende** | Eva Schlüter | [eva.schlueter0412@gmail.com](mailto:eva.schlueter0412@gmail.com) | |
+| **2. Vorsitzender** | Manuel Wetzel | [manuelwetzel941@gmail.com](mailto:manuelwetzel941@gmail.com) | 015779771680 |
+| **Kassenwärtin** | Marion Anfang | [marion.anfang@gmail.com](mailto:marion.anfang@gmail.com) | |
+| **Sportwart** | Florian Siebert | [fsiebert8@gmail.com](mailto:fsiebert8@gmail.com) | 017638212080 |
 
 ## Vereine
 
