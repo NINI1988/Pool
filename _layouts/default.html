@@ -9,10 +9,12 @@
   </head>
   <body>
     {% include header.html %}
+    {% unless page.layout == 'home' %}
+      <section class="subhero" aria-hidden="true"></section>
+    {% endunless %}
     <main id="content">
       {{ content }}
     </main>
     {% include footer.html %}
   </body>
 </html>
-
