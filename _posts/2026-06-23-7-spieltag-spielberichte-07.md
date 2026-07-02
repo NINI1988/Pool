@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 7. Spieltag
 
-![](/assets/uploads/2026/06/siebterSpieltag.png)
+![]({{ '/assets/uploads/2026/06/siebterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 7. Spieltag</summary>

@@ -8,4 +8,4 @@ description: "Tabelle Mannschaftswertung Hier könnt ihr euch den aktuellen Stan
 
 Hier könnt ihr euch den aktuellen Stand in der Mannschaftswertung ansehen.
 
-![](/assets/uploads/2026/06/Mannschaftswertung.png)
+![]({{ '/assets/uploads/2026/06/Mannschaftswertung.png' | relative_url }})

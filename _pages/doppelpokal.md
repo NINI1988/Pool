@@ -47,28 +47,28 @@ Die 2. Runde des Doppelpokals findet am 13.02.2026 um 18:00 Uhr statt. 
 
 </details>
 
-![](/assets/uploads/2025/10/Doppelpokal_1.Runde_Gruppe1-2-1024x692.png)
+![]({{ '/assets/uploads/2025/10/Doppelpokal_1.Runde_Gruppe1-2-1024x692.png' | relative_url }})
 
-![](/assets/uploads/2025/10/Doppelpokal_1.Runde_Gruppe2-2-1024x692.png)
+![]({{ '/assets/uploads/2025/10/Doppelpokal_1.Runde_Gruppe2-2-1024x692.png' | relative_url }})
 
 Auch in den Pokalrunden wurden weitere Spiele ausgetragen. So fand am 13.02. die 2. Runde des Doppelpokals statt. Gespielt wurde in zwei Vierer-Gruppen, in denen jeweils die ersten Drei in die Finalrunde einziehen. Durch die spontane Absage von Martin Kolbe stand für seine Doppelpartnerin Eva Schlüter und für alle anderen aus Gruppe A bereits vor Spielbeginn fest, dass diese beiden als Gruppenletzte ausscheiden werden. Natürlich wurden die Platzierungen dennoch ausgespielt. Die Spiele waren insgesamt spannend und eng – wie es sich für Pokalspiele gehört. Schließlich konnte sich das Duo bestehend aus Marcus Heemann und Wolfgang Hannemann mit einem Gesamtergebnis von 5:3 als Gruppenerster für die Finalrunde qualifizieren. Als Zweitplatzierte folgten Heinz und Marianne Beckmann, die überraschend zwar gegen Marcus und Wolfgang gewannen, aber genauso überraschend gegen Stefan van de Weyer und Florian Siebert verloren. Schließlich reichte eine Bilanz von 5:2 aber, um sicher die Finalrunde zu erreichen. Stefan und Florian folgten als Drittplatzierte mit insgesamt 4:3, ausschlaggebend war der Sieg über Marianne und Heinz. Zu viert wären die Spiele bestimmt noch heißer umkämpft gewesen.
 
 In Gruppe B war das Ergebnis etwas eindeutiger. Mit drei unumstrittenen Siegen und einer Bilanz von 6:2 setzte sich das Doppel aus Helmut Schönhofer und Uwe Frey an die Tabellenspitze. Mit einer ebenfalls positiven Bilanz von 5:4 folgten Jose A. Cavaco und Helmut Scheimann, die sehr solide aufspielten und sich nur Helmut und Uwe geschlagen geben mussten. Mit zwei Niederlagen gegen die beiden führenden Gruppenduos, aber auch einem deutlichen 2:0-Sieg gegen Jürgen Jendraczyk und Andreas Böttcher qualifizierten sich „die Philippse“ Philipp Klostermann und Philipp Richter mit einer Bilanz von 3:4 als Gruppendritte ebenfalls für die Finalrunde. Sieglos blieben in der 2. Runde des Doppelpokals Andreas und Jürgen, die aber in zwei Spielen ehrgeizig und verdient jeweils einen Punkt erkämpften. Mit einer Bilanz von 2:6 wird die Finalrunde ohne die beiden stattfinden.
 
-![](/assets/uploads/2026/03/Doppelpokal_2.Runde_GruppeA.png)
+![]({{ '/assets/uploads/2026/03/Doppelpokal_2.Runde_GruppeA.png' | relative_url }})
 
-![](/assets/uploads/2026/03/Doppelpokal_2.Runde_GruppeB.png)
+![]({{ '/assets/uploads/2026/03/Doppelpokal_2.Runde_GruppeB.png' | relative_url }})
 
 ## Finalrunde
 
 Der erste Teil der Finalrunde brachte folgende Ergebnisse:
 
-![](/assets/uploads/2026/06/Doppelpokal_Finalrunde_GruppeC.png)
+![]({{ '/assets/uploads/2026/06/Doppelpokal_Finalrunde_GruppeC.png' | relative_url }})
 
-![](/assets/uploads/2026/06/Doppelpokal_Finalrunde_GruppeD.png)
+![]({{ '/assets/uploads/2026/06/Doppelpokal_Finalrunde_GruppeD.png' | relative_url }})
 
 Im zweiten Teil der Finalrunde – der K.O.-Phase – ergaben sich folgende Begegnungen mit diesen Ergebnissen:
 
-![](/assets/uploads/2026/06/Doppelpokal_Finalrunde_K.O.-Runde-1024x532.png)
+![]({{ '/assets/uploads/2026/06/Doppelpokal_Finalrunde_K.O.-Runde-1024x532.png' | relative_url }})
 
 Herzlichen Glückwunsch an Philipp Klostermann und Philipp Richter zum Doppelpokalsieg! Jose A. Cavaco und Helmut Scheimann gratulieren wir zum Doppelpokalvize, ebenfalls beglückwünschen wir Heinz und Marianne Beckmann zum dritten Platz im diesjährigen Doppelpokal!

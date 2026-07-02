@@ -58,6 +58,8 @@ poolbillard-ms.de
 
 In GitHub muss unter `Settings -> Pages -> Custom domain` ebenfalls `poolbillard-ms.de` eingetragen werden. Beim DNS-Anbieter muss die Domain auf GitHub Pages zeigen. Für die Apex-Domain werden die aktuellen GitHub-Pages-A-Records benötigt; für `www.poolbillard-ms.de` üblicherweise ein CNAME auf den GitHub-Pages-Host des Repositories. Nach erfolgreicher DNS-Prüfung sollte `Enforce HTTPS` aktiviert werden.
 
+Solange die Seite unter `https://nini1988.github.io/Pool/` getestet wird, bleibt in `_config.yml` `baseurl: "/Pool"` gesetzt. Wenn ausschließlich die Custom Domain `https://poolbillard-ms.de/` verwendet wird, muss `baseurl` wieder auf `""` geändert werden.
+
 ## Migration erneut ausführen
 
 Das Migrationstool liest öffentliche WordPress-Daten und Medien:

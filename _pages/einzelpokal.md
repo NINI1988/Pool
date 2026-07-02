@@ -46,13 +46,13 @@ Die wohl größte Überraschung gab es in Gruppe 4. Mit Manuel Wetzel, Philipp K
 
 In der 2. Runde des Einzelpokals treten die 12 Verbliebenen in drei 4er-Gruppen an, bei denen jeweils die ersten Drei in die 3. Runde einziehen.
 
-![](/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe1.png)
+![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe1.png' | relative_url }})
 
-![](/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe2.png)
+![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe2.png' | relative_url }})
 
-![](/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe3.png)
+![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe3.png' | relative_url }})
 
-![](/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe4-1024x715.png)
+![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe4-1024x715.png' | relative_url }})
 
 ## Begegnungen und Ergebnisse der 2. Runde
 
@@ -70,38 +70,38 @@ Die konkreten Ergebnisse und Tabellen findet ihr unter dem Abschnitt „Einzelpo
 
 In der 3. Runde spielen die verbliebenen 9 Teilnehmenden zunächst in Dreiergruppen, ehe am gleichen Abend 8 weiterhin Qualifizierte in Vierergruppen um den Einzug in die Finalrunde kämpfen. Die 3. Runde des Einzelpokals findet am 22.03. statt. 
 
-![](/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeA.png)
+![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeA.png' | relative_url }})
 
-![](/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeB.png)
+![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeB.png' | relative_url }})
 
-![](/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeC.png)
+![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeC.png' | relative_url }})
 
 ## Begegnungen und Ergebnisse der 3. Runde
 
 Teil 1:
 
-![](/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeD.png)
+![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeD.png' | relative_url }})
 
-![](/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeE.png)
+![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeE.png' | relative_url }})
 
-![](/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeF.png)
+![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeF.png' | relative_url }})
 
 Teil 2:
 
-![](/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeG.png)
+![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeG.png' | relative_url }})
 
-![](/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeH.png)
+![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeH.png' | relative_url }})
 
 ## Finalrunde
 
 Der erste Teil der Finalrunde brachte folgende Ergebnisse in den jeweiligen Begegnungen hervor:
 
-![](/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeI.png)
+![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeI.png' | relative_url }})
 
-![](/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeJ.png)
+![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeJ.png' | relative_url }})
 
 Der zweite Teil der Finalrunde wurde direkt im Anschluss gespielt. Hier gab es folgende Begegnungen mit folgenden Ergebnissen:
 
-![](/assets/uploads/2026/06/Einzelpokal_Finalrunde_K.O.-Runde-1024x646.png)
+![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_K.O.-Runde-1024x646.png' | relative_url }})
 
 Herzlichen Glückwunsch an Othmane El Bahyaoúi zum Sieg im Einzelpokal! Außerdem gratulieren wir Stefan Liesbrock zum Einzelpokalvize, sowie Jose A. Cavaco zum dritten Platz im diesjährigen Einzelpokal.

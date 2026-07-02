@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 2. Spieltag
 
-![](/assets/uploads/2026/03/zweiterSpieltag.png)
+![]({{ '/assets/uploads/2026/03/zweiterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 2. Spieltag</summary>

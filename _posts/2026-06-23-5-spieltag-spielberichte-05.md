@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 5. Spieltag
 
-![](/assets/uploads/2026/03/fuenfterSpieltag.png)
+![]({{ '/assets/uploads/2026/03/fuenfterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 5. Spieltag</summary>

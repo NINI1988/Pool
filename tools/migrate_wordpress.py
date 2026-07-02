@@ -283,7 +283,12 @@ def convert_html(raw_html: str, asset_map: dict[str, str]) -> str:
         md = md.replace(source, local)
     md = re.sub(r"\((https://poolbillard-ms\.de)(/[^)]+)\)", r"(\2)", md)
     md = re.sub(r"(!\[[^\]]*\]\((/assets/[^)]+)\)\n\n)(?:!\[[^\]]*\]\(\2\)\n\n)+", r"\1", md)
-    return dedupe_adjacent_images(md)
+    md = dedupe_adjacent_images(md)
+    return liquidize_asset_links(md)
+
+
+def liquidize_asset_links(markdown: str) -> str:
+    return re.sub(r"\((/assets/[^)]+)\)", r"({{ '\1' | relative_url }})", markdown)
 
 
 def dedupe_adjacent_images(markdown: str) -> str:
