@@ -1,7 +1,10 @@
 # Pool-Billard-Liga Münster
 
-Webseite aufrufbar unter: https://nini1988.github.io/Pool/
-Admin Seite unter: https://nini1988.github.io/Pool/admin
+Webseite aufrufbar unter: https://nini1988.github.io/Pool/  
+Admin Seite unter: https://nini1988.github.io/Pool/admin  
+Um das Layout und so weiter direkt im Webbrowser zu bearbeiten Drücke die `.` Taste.
+
+Nachdem Änderungen veröffentlicht wurden wird die Webseite neu gebaut. Der Status kann in https://github.com/NINI1988/Pool/actions angezeigt werden.
 
 ## Inhalte
 
