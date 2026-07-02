@@ -3,6 +3,9 @@ backend:
   repo: NINI1988/Pool # TODO: durch das echte GitHub-Repository ersetzen
   branch: main
 
+  # Das sagt Decap CMS, dass es Netlify als OAuth-Provider nutzen soll:
+  site_id: astounding-sunburst-46c82a.netlify.app  # Ihre Netlify-Subdomain oder Custom Domain
+
 publish_mode: editorial_workflow
 media_folder: assets/uploads
 public_folder: /assets/uploads
