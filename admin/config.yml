@@ -6,7 +6,7 @@ backend:
   # Zwingt Decap CMS, direkt an die Netlify-Zentrale zu senden:
   base_url: https://api.netlify.com
   auth_endpoint: auth
-  site_id: astounding-sunburst-46c82a.netlify.app
+  site_domain: astounding-sunburst-46c82a.netlify.app
 
 publish_mode: editorial_workflow
 media_folder: assets/uploads
