@@ -5,4 +5,7 @@ description: So ne kurze Beschreibung?
 ---
 Hallo zusammen. Jetzt kommt ein Bild:
 
-![](/assets/uploads/test.bmp "Foto Titel")
+Jezt mal **fett** Schrift. Und *Cursiv*.
+
+
+![](../assets/uploads/test.bmp "Foto Titel")
