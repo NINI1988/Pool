@@ -1,0 +1,37 @@
+title: Pool-Billard-Liga Münster
+description: Billard spielen in Münster
+url: "https://poolbillard-ms.de"
+baseurl: ""
+lang: de
+timezone: Europe/Berlin
+
+permalink: /news/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: page
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+
+exclude:
+  - README.md
+  - TODO.md
+  - tools/
+  - vendor/
+

@@ -1,0 +1,11 @@
+<ul class="post-list">
+  {% for post in site.posts %}
+    <li>
+      <a href="{{ post.url | relative_url }}">
+        <span>{{ post.date | date: "%d.%m.%Y" }}</span>
+        <strong>{{ post.title }}</strong>
+      </a>
+    </li>
+  {% endfor %}
+</ul>
+

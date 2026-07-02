@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">Amateurliga in Münster</p>
+    <h1>{{ site.data.club.name }}</h1>
+    <p>{{ site.data.club.tagline }}. Ligaspiele, Pokalrunden und Gemeinschaft rund um Pool-Billard in Münster.</p>
+    <div class="hero-actions">
+      <a class="button light" href="{{ '/vorstand-vereine/' | relative_url }}">Mitspielen</a>
+      <a class="button light" href="{{ '/spielplan/' | relative_url }}">Spielplan ansehen</a>
+    </div>
+  </div>
+</section>
+
+<article class="page-shell">
+  <div class="content">
+    {{ content }}
+  </div>
+</article>
+
