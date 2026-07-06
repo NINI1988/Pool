@@ -8,4 +8,4 @@ description: "Tabelle Einzelwertung Hier könnt ihr euch den aktuellen Stand in 
 
 Hier könnt ihr euch den aktuellen Stand in der Einzelwertung ansehen.
 
-![]({{ '/assets/uploads/2026/06/Einzelwertung.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelwertung.png' | relative_url }})

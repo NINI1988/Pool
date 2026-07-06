@@ -129,9 +129,6 @@ def local_asset_path(url: str) -> str:
     filename = Path(urllib.parse.unquote(parsed.path)).name
     if not filename:
         filename = slugify(parsed.path) or "asset"
-    if "/wp-content/uploads/" in parsed.path:
-        relative = parsed.path.split("/wp-content/uploads/", 1)[1]
-        return f"/assets/uploads/{relative}"
     return f"/assets/uploads/{filename}"
 
 

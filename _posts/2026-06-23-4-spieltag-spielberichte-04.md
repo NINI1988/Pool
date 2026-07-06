@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 4. Spieltag
 
-![]({{ '/assets/uploads/2026/03/vierterSpieltag.png' | relative_url }})
+![]({{ '/assets/uploads/vierterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 4. Spieltag</summary>

@@ -329,8 +329,14 @@ h3 {
   color: var(--text);
 }
 
-@media (max-width: 760px) {
-  .site-header-inner,
+@media (max-width: 920px) {
+  .site-header-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+  }
+
   .site-footer {
     display: block;
   }
@@ -341,20 +347,22 @@ h3 {
 
   .nav-menu {
     display: block;
-    margin-top: .9rem;
+    justify-self: end;
   }
 
   .nav-menu summary {
+    position: relative;
     display: inline-flex;
-    min-height: 2.5rem;
+    width: 2.75rem;
+    height: 2.75rem;
     align-items: center;
-    padding: .35rem .75rem;
+    justify-content: center;
+    padding: 0;
     border: 1px solid var(--line);
     border-radius: 6px;
     background: var(--surface);
     color: var(--text);
     cursor: pointer;
-    font-weight: 750;
     list-style: none;
   }
 
@@ -362,18 +370,41 @@ h3 {
     display: none;
   }
 
+  .nav-menu summary span,
+  .nav-menu summary::before,
   .nav-menu summary::after {
     content: "";
-    width: .5rem;
-    height: .5rem;
-    margin-left: .55rem;
-    border-right: 2px solid currentColor;
-    border-bottom: 2px solid currentColor;
-    transform: rotate(45deg) translateY(-.1rem);
+    display: block;
+    width: 1.15rem;
+    height: 2px;
+    border-radius: 999px;
+    background: currentColor;
+  }
+
+  .nav-menu summary span {
+    position: relative;
+  }
+
+  .nav-menu summary::before {
+    position: absolute;
+    transform: translateY(-.42rem);
+  }
+
+  .nav-menu summary::after {
+    position: absolute;
+    transform: translateY(.42rem);
   }
 
   .nav-menu[open] summary::after {
-    transform: rotate(225deg) translate(-.1rem, -.1rem);
+    transform: rotate(-45deg);
+  }
+
+  .nav-menu[open] summary::before {
+    transform: rotate(45deg);
+  }
+
+  .nav-menu[open] summary span {
+    opacity: 0;
   }
 
   .site-nav {
@@ -385,10 +416,15 @@ h3 {
     display: grid;
     grid-template-columns: 1fr;
     gap: .1rem;
+    position: absolute;
+    left: clamp(1rem, 4vw, 2rem);
+    right: clamp(1rem, 4vw, 2rem);
+    top: calc(100% - .4rem);
     padding: .55rem;
     border: 1px solid var(--line);
     border-radius: 8px;
     background: var(--surface);
+    box-shadow: 0 16px 35px rgba(23, 32, 28, .16);
   }
 
   .site-nav a {

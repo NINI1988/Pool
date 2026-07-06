@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 15. Spieltag
 
-![]({{ '/assets/uploads/2026/06/fuenfzehnterSpieltag.png' | relative_url }})
+![]({{ '/assets/uploads/fuenfzehnterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 15. Spieltag</summary>
