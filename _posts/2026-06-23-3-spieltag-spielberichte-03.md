@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 3. Spieltag
 
-![]({{ '/assets/uploads/2026/03/dritterSpieltag.png' | relative_url }})
+![]({{ '/assets/uploads/dritterSpieltag.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 3. Spieltag</summary>

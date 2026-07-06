@@ -10,21 +10,21 @@ Der Einzelpokal der Saison 2025/2026 besteht wie gewohnt aus **drei Runden** und
 
 In der **1. Runde** werden die 16 Teilnehmenden per Losverfahren auf **vier Vierergruppen** aufgeteilt. Gespielt wird jede:r gegen jede:n im **Modus „Best of three“**, die **ersten Drei** kommen jeweils weiter. Somit ziehen **12** Spieler:innen in die 2. Runde ein. Der weitere Weg wurde bereits festgelegt.
 
-Über die Ergebnisse der 1. Runde entstehen **drei **neue **Vierergruppen**. Auch in dieser Runde spielt jede:r gegen jede:n im **Modus „Best of three“**. Auch hier kommen jeweils die **ersten Drei** weiter, sodass sich für die 3. Runde **9** Spieler:innen qualifizieren.
+Über die Ergebnisse der 1. Runde entstehen **drei** neue **Vierergruppen**. Auch in dieser Runde spielt jede:r gegen jede:n im **Modus „Best of three“**. Auch hier kommen jeweils die **ersten Drei** weiter, sodass sich für die 3. Runde **9** Spieler:innen qualifizieren.
 
-Die 3. Runde im Einzelpokal besteht aus zwei Durchläufen. Zunächst werden die **9 **Spieler:innen auf **drei Dreiergruppen **aufgeteilt. Es spielt abermals jede:r gegen jede:n im **Modus „Best of three“**. Die jeweils **ersten Beiden**, sowie der:die **beste und zweitbeste Dritte** ziehen in die nächste Runde ein, die direkt im Anschluss gespielt wird. Es scheidet an dieser Stelle also nur eine Person aus!
+Die 3. Runde im Einzelpokal besteht aus zwei Durchläufen. Zunächst werden die **9** Spieler:innen auf **drei Dreiergruppen** aufgeteilt. Es spielt abermals jede:r gegen jede:n im **Modus „Best of three“**. Die jeweils **ersten Beiden**, sowie der:die **beste und zweitbeste Dritte** ziehen in die nächste Runde ein, die direkt im Anschluss gespielt wird. Es scheidet an dieser Stelle also nur eine Person aus!
 
-Die verbliebenen **8 **Spieler:innen werden durch den vorgegebenen Weg erneut auf **zwei Vierergruppen **aufgeteilt. Auch hier spielt jede:r gegen jede:n im **Modus „Best of three“**. In die **Finalrunde **ziehen jeweils die **ersten Drei** ein.
+Die verbliebenen **8** Spieler:innen werden durch den vorgegebenen Weg erneut auf **zwei Vierergruppen** aufgeteilt. Auch hier spielt jede:r gegen jede:n im **Modus „Best of three“**. In die **Finalrunde** ziehen jeweils die **ersten Drei** ein.
 
-Auch die **Finalrunde **besteht aus **zwei Teilen**. Im ersten Teil werden die **6 **verbliebenen Spieler:innen zum letzten Mal in Gruppen aufgeteilt. In diesem Fall sind es **zwei Dreiergruppen**. Gespielt wird ein letztes Mal jede:r gegen jede:n im **Modus „Best of three“**, weiter kommen jeweils die **ersten Beiden**.
+Auch die **Finalrunde** besteht aus **zwei Teilen**. Im ersten Teil werden die **6** verbliebenen Spieler:innen zum letzten Mal in Gruppen aufgeteilt. In diesem Fall sind es **zwei Dreiergruppen**. Gespielt wird ein letztes Mal jede:r gegen jede:n im **Modus „Best of three“**, weiter kommen jeweils die **ersten Beiden**.
 
-Diese **4 **Spieler:innen ziehen in den zweiten Teil der Finalrunde ein – in die **K.O.-Phase**. Nach dem vorgegebenen Weg entstehen zwei Paarungen, die das **Halbfinale **bilden. Gespielt wird im **Modus „Best of three“**, der:die jeweilige Gewinner:in zieht ins Finale ein, der:die jeweils andere spielt um Platz 3.
+Diese **4** Spieler:innen ziehen in den zweiten Teil der Finalrunde ein – in die **K.O.-Phase**. Nach dem vorgegebenen Weg entstehen zwei Paarungen, die das **Halbfinale** bilden. Gespielt wird im **Modus „Best of three“**, der:die jeweilige Gewinner:in zieht ins Finale ein, der:die jeweils andere spielt um Platz 3.
 
 Das **Spiel um Platz 3** wird auch im **Modus „Best of three“** ausgetragen, das **Finale** im **Modus „Best of five“**.
 
-In allen Gruppenphasen ist für das Ergebnis die **Gesamtbilanz **entscheidend. Hierbei hat eine höhere Anzahl an gewonnen Spielen Vorrang, d. h. eine Bilanz von 4:3 ist besser zu bewerten als eine Bilanz von 3:2.
+In allen Gruppenphasen ist für das Ergebnis die **Gesamtbilanz** entscheidend. Hierbei hat eine höhere Anzahl an gewonnen Spielen Vorrang, d. h. eine Bilanz von 4:3 ist besser zu bewerten als eine Bilanz von 3:2.
 
-Im Falle eines **Gleichstandes**, z. B. haben zwei Spieler:innen eine Bilanz von 4:4, wird ein **Stechspiel **ausgetragen.
+Im Falle eines **Gleichstandes**, z. B. haben zwei Spieler:innen eine Bilanz von 4:4, wird ein **Stechspiel** ausgetragen.
 
 Im **zweiten Teil der Finalrunde** wird nach dem **K.O.-System** gespielt.
 
@@ -46,13 +46,13 @@ Die wohl größte Überraschung gab es in Gruppe 4. Mit Manuel Wetzel, Philipp K
 
 In der 2. Runde des Einzelpokals treten die 12 Verbliebenen in drei 4er-Gruppen an, bei denen jeweils die ersten Drei in die 3. Runde einziehen.
 
-![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe1.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_1.Runde_Gruppe1.png' | relative_url }})
 
-![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe2.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_1.Runde_Gruppe2.png' | relative_url }})
 
-![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe3.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_1.Runde_Gruppe3.png' | relative_url }})
 
-![]({{ '/assets/uploads/2025/10/Einzelpokal_1.Runde_Gruppe4-1024x715.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_1.Runde_Gruppe4-1024x715.png' | relative_url }})
 
 ## Begegnungen und Ergebnisse der 2. Runde
 
@@ -70,38 +70,38 @@ Die konkreten Ergebnisse und Tabellen findet ihr unter dem Abschnitt „Einzelpo
 
 In der 3. Runde spielen die verbliebenen 9 Teilnehmenden zunächst in Dreiergruppen, ehe am gleichen Abend 8 weiterhin Qualifizierte in Vierergruppen um den Einzug in die Finalrunde kämpfen. Die 3. Runde des Einzelpokals findet am 22.03. statt. 
 
-![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeA.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_2.Runde_GruppeA.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeB.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_2.Runde_GruppeB.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/01/Einzelpokal_2.Runde_GruppeC.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_2.Runde_GruppeC.png' | relative_url }})
 
 ## Begegnungen und Ergebnisse der 3. Runde
 
 Teil 1:
 
-![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeD.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_3.Runde_GruppeD.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeE.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_3.Runde_GruppeE.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeF.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_3.Runde_GruppeF.png' | relative_url }})
 
 Teil 2:
 
-![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeG.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_3.Runde_GruppeG.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/04/Einzelpokal_3.Runde_GruppeH.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_3.Runde_GruppeH.png' | relative_url }})
 
 ## Finalrunde
 
 Der erste Teil der Finalrunde brachte folgende Ergebnisse in den jeweiligen Begegnungen hervor:
 
-![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeI.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_Finalrunde_GruppeI.png' | relative_url }})
 
-![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_GruppeJ.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_Finalrunde_GruppeJ.png' | relative_url }})
 
 Der zweite Teil der Finalrunde wurde direkt im Anschluss gespielt. Hier gab es folgende Begegnungen mit folgenden Ergebnissen:
 
-![]({{ '/assets/uploads/2026/06/Einzelpokal_Finalrunde_K.O.-Runde-1024x646.png' | relative_url }})
+![]({{ '/assets/uploads/Einzelpokal_Finalrunde_K.O.-Runde-1024x646.png' | relative_url }})
 
 Herzlichen Glückwunsch an Othmane El Bahyaoúi zum Sieg im Einzelpokal! Außerdem gratulieren wir Stefan Liesbrock zum Einzelpokalvize, sowie Jose A. Cavaco zum dritten Platz im diesjährigen Einzelpokal.

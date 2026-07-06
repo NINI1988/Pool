@@ -10,7 +10,7 @@
       {% endfor %}
     </nav>
     <details class="nav-menu">
-      <summary>Menü</summary>
+      <summary aria-label="Menü"><span></span></summary>
       <nav class="site-nav mobile-nav" aria-label="Hauptnavigation mobil">
         {% for item in site.data.navigation.items %}
           <a href="{{ item.url | relative_url }}">{{ item.title }}</a>

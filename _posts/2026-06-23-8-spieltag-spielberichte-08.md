@@ -5,7 +5,7 @@ date: "2026-06-23 12:00:00 +0100"
 
 ## 8. Spieltag
 
-![]({{ '/assets/uploads/2026/03/achterSpieltag-1.png' | relative_url }})
+![]({{ '/assets/uploads/achterSpieltag-1.png' | relative_url }})
 
 <details>
 <summary>Spielbericht 8. Spieltag</summary>
