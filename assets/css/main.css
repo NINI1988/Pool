@@ -233,9 +233,6 @@ h3 {
 }
 
 .content table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
 }
 
