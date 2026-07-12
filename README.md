@@ -24,3 +24,15 @@ Alle Redakteure benötigen:
 - einen GitHub-Account,
 - Schreibrechte auf das Repository,
 - Zugriff auf die Decap-Auth-Lösung (Vielleicht?)
+
+# Entwickler Infos
+
+## Lokale Umgebung
+
+- Install Ruby. Eg: https://github.com/oneclick/rubyinstaller2/releases/download/RubyInstaller-3.2.11-1/rubyinstaller-devkit-3.2.11-1-x64.exe
+- Github uses not the latest Ruby version, so keep version 3.2.
+- Execute: `bundle install`
+- Execute: `bundle exec jekyll serve`
+- Execute: `npx decap-server` to start Decap server
+  - Add `local_backend: true` to `admin/config.yml`
+  - Access with http://localhost:4000/Pool/admin/

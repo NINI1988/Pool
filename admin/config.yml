@@ -11,7 +11,8 @@ backend:
 publish_mode: editorial_workflow
 media_folder: assets/uploads
 public_folder: /assets/uploads
-site_url: https://poolbillard-ms.de
+# site_url: https://poolbillard-ms.de
+site_url: /Pool/
 locale: de
 
 collections:
@@ -26,19 +27,20 @@ collections:
       - { label: Titel, name: title, widget: string }
       - { label: Beschreibung, name: description, widget: text, required: false }
       - { label: Permalink, name: permalink, widget: string, hint: "Beispiel: /spielplan/" }
-      - { label: Inhalt, name: body, widget: markdown }
+      - { label: Inhalt, name: body, widget: richtext }
   - name: posts
     label: News und Beiträge
     folder: _posts
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    preview_path: "news/{{slug}}/"
     extension: md
     format: frontmatter
     fields:
       - { label: Titel, name: title, widget: string }
       - { label: Datum, name: date, widget: datetime }
       - { label: Beschreibung, name: description, widget: text, required: false }
-      - { label: Inhalt, name: body, widget: markdown }
+      - { label: Inhalt, name: body, widget: richtext }
   - name: data
     label: Daten
     files:

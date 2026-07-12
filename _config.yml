@@ -5,7 +5,7 @@ baseurl: "/Pool"
 lang: de
 timezone: Europe/Berlin
 
-permalink: /news/:year/:month/:day/:title/
+permalink: /news/:year-:month-:day-:title/
 
 plugins:
   - jekyll-feed

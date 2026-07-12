@@ -233,9 +233,6 @@ h3 {
 }
 
 .content table {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
   border-collapse: collapse;
 }
 
@@ -244,7 +241,6 @@ h3 {
   border: 1px solid var(--line);
   padding: .5rem .65rem;
   text-align: left;
-  vertical-align: top;
 }
 
 .content th {
@@ -441,4 +437,16 @@ h3 {
   .site-footer nav {
     margin-top: 1rem;
   }
+}
+
+/* Excel clipboard table styles */
+table.excel {
+  border-collapse: collapse;
+}
+table.excel tr {
+  vertical-align: bottom;
+}
+table.excel td,
+table.excel th {
+  white-space: nowrap;
 }
