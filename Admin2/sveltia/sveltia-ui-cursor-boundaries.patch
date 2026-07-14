@@ -1,0 +1,175 @@
+--- a/dist/components/text-editor/core.js
++++ b/dist/components/text-editor/core.js
+@@ -65,6 +65,7 @@ import {
+   TEXT_FORMAT_BUTTON_TYPES,
+   TRANSFORMER_MAP,
+ } from './constants.js';
++import { registerCursorBoundaryClicks } from './cursor-boundaries.js';
+ import { increaseListIndentation, splitMultilineFormatting } from './markdown.js';
+ import { HR } from './transformers/hr.js';
+ import { TABLE } from './transformers/table.js';
+@@ -399,5 +400,11 @@ export const initEditor = ({
++      const unregisterCursorBoundaryClicks = registerCursorBoundaryClicks({
++        editor,
++        rootElement: root,
++        isCodeEditor,
++      });
+       root.addEventListener('keydown', onKeydown);
+-
++      // Remove all root-specific listeners when the editor root changes or is unmounted.
+       return () => {
+         root.removeEventListener('keydown', onKeydown);
++        unregisterCursorBoundaryClicks();
+       };
+--- a/dist/components/text-editor/lexical-root.svelte
++++ b/dist/components/text-editor/lexical-root.svelte
+@@ -146,3 +146,9 @@
++.lexical-root[data-cursor-boundary-before] {
++  padding-block-start: 12px;
++}
++.lexical-root[data-cursor-boundary-after] {
++  padding-block-end: 12px;
++}
+ .lexical-root:not(:first-child) {
+   border-start-start-radius: 0 !important;
+   border-start-end-radius: 0 !important;
+--- /dev/null
++++ b/dist/components/text-editor/cursor-boundaries.js
+@@ -0,0 +1,137 @@
++import {
++  $createParagraphNode as createParagraphNode,
++  $getRoot as getRoot,
++  DecoratorNode,
++} from 'lexical';
++
++const BEFORE_ATTRIBUTE = 'data-cursor-boundary-before';
++const AFTER_ATTRIBUTE = 'data-cursor-boundary-after';
++
++/**
++ * Determine whether a root-level node needs an adjacent paragraph so the cursor can be placed
++ * outside it. Code blocks consume line breaks, while decorator nodes are atomic and cannot contain
++ * a text selection.
++ * @param {import('lexical').LexicalNode | null} node Lexical node.
++ * @returns {boolean} Whether the node needs a cursor boundary.
++ */
++const needsCursorBoundary = (node) =>
++  !!node && (node.getType() === 'code' || node instanceof DecoratorNode);
++
++/**
++ * Synchronize the root element's cursor boundary attributes with the current editor state.
++ * @param {object} args Arguments.
++ * @param {import('lexical').LexicalEditor} args.editor Lexical editor.
++ * @param {HTMLElement} args.rootElement Editor root element.
++ * @param {boolean} args.isCodeEditor Whether the editor is a dedicated code editor.
++ */
++const updateBoundaryAttributes = ({ editor, rootElement, isCodeEditor }) => {
++  const boundaries = editor.getEditorState().read(() => {
++    const root = getRoot();
++
++    return {
++      before: !isCodeEditor && needsCursorBoundary(root.getFirstChild()),
++      after: !isCodeEditor && needsCursorBoundary(root.getLastChild()),
++    };
++  });
++
++  rootElement.toggleAttribute(BEFORE_ATTRIBUTE, boundaries.before);
++  rootElement.toggleAttribute(AFTER_ATTRIBUTE, boundaries.after);
++};
++
++/**
++ * Find which cursor boundary was clicked.
++ * @param {PointerEvent} event Pointer event.
++ * @param {HTMLElement} rootElement Editor root element.
++ * @returns {'before' | 'after' | undefined} Clicked boundary.
++ */
++const getClickedBoundary = (event, rootElement) => {
++  if (event.button !== 0 || event.target !== rootElement) {
++    return undefined;
++  }
++
++  const { firstElementChild, lastElementChild } = rootElement;
++
++  if (
++    rootElement.hasAttribute(BEFORE_ATTRIBUTE) &&
++    firstElementChild &&
++    event.clientY < firstElementChild.getBoundingClientRect().top
++  ) {
++    return 'before';
++  }
++
++  if (
++    rootElement.hasAttribute(AFTER_ATTRIBUTE) &&
++    lastElementChild &&
++    event.clientY > lastElementChild.getBoundingClientRect().bottom
++  ) {
++    return 'after';
++  }
++
++  return undefined;
++};
++
++/**
++ * Register click areas before and after terminal code blocks and atomic editor components.
++ * A paragraph is created only when a user clicks a boundary. Dedicated code editors are excluded.
++ * @param {object} args Arguments.
++ * @param {import('lexical').LexicalEditor} args.editor Lexical editor.
++ * @param {HTMLElement} args.rootElement Editor root element.
++ * @param {boolean} [args.isCodeEditor] Whether the editor is a dedicated code editor.
++ * @returns {() => void} Cleanup handler.
++ */
++export const registerCursorBoundaryClicks = ({
++  editor,
++  rootElement,
++  isCodeEditor = false,
++}) => {
++  const synchronize = () => updateBoundaryAttributes({ editor, rootElement, isCodeEditor });
++
++  /**
++   * Create a paragraph at the clicked boundary and move the cursor into it.
++   * @param {PointerEvent} event Pointer event.
++   */
++  const handlePointerDown = (event) => {
++    const boundary = getClickedBoundary(event, rootElement);
++
++    if (!boundary || !editor.isEditable()) {
++      return;
++    }
++
++    event.preventDefault();
++    rootElement.focus({ preventScroll: true });
++    editor.update(
++      () => {
++        const root = getRoot();
++        const referenceNode =
++          boundary === 'before' ? root.getFirstChild() : root.getLastChild();
++
++        if (!needsCursorBoundary(referenceNode)) {
++          return;
++        }
++
++        const paragraph = createParagraphNode();
++
++        if (boundary === 'before') {
++          referenceNode.insertBefore(paragraph);
++        } else {
++          referenceNode.insertAfter(paragraph);
++        }
++
++        paragraph.select();
++      },
++      { discrete: true },
++    );
++  };
++
++  const unregisterUpdateListener = editor.registerUpdateListener(synchronize);
++
++  rootElement.addEventListener('pointerdown', handlePointerDown);
++  synchronize();
++
++  return () => {
++    rootElement.removeEventListener('pointerdown', handlePointerDown);
++    unregisterUpdateListener();
++    rootElement.toggleAttribute(BEFORE_ATTRIBUTE, false);
++    rootElement.toggleAttribute(AFTER_ATTRIBUTE, false);
++  };
++};

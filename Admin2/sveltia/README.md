@@ -11,6 +11,14 @@ interaktive Bedienoberfläche innerhalb einer solchen Komponente. Deshalb fügt
 `control`-Hook hinzu. Tabellenlogik oder projektspezifische Styles sind nicht im
 Sveltia-Patch enthalten.
 
+Das in Sveltia verwendete `@sveltia/ui` bietet bei alleinstehenden Code-Blöcken
+und atomaren Editor-Komponenten keine anklickbare Position vor oder nach dem
+Block. `sveltia-ui-cursor-boundaries.patch` ergänzt dafür kleine Klickbereiche.
+Erst ein Klick erzeugt an der gewählten Stelle einen Absatz und setzt den Cursor
+hinein; automatische Leerzeilen gibt es nicht. Reine Code-Editor-Felder sind
+davon ausgenommen. Das Verhalten wird durch `cursor-boundaries.test.js`
+abgesichert.
+
 ## Reproduzierbarer Build
 
 Vom Repository-Wurzelverzeichnis aus:
@@ -20,7 +28,7 @@ Vom Repository-Wurzelverzeichnis aus:
 ```
 
 Das Skript lädt die fest gepinnten Quell- und npm-Archive, prüft deren
-SHA-256-Prüfsummen, wendet den Patch an, führt den relevanten Sveltia-Test,
+SHA-256-Prüfsummen, wendet beide Patches an, führt die relevanten Tests,
 Format- und Lint-Prüfungen sowie `svelte-check` aus und erstellt anschließend
 `Admin2/sveltia-cms-table-0.170.8.js`. Abhängigkeiten werden nur in einem
 temporären Verzeichnis installiert.

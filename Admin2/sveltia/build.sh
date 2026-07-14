@@ -15,6 +15,7 @@ readonly SOURCE_ARCHIVE="${WORK_DIR}/sveltia-source.tar.gz"
 readonly NPM_ARCHIVE="${WORK_DIR}/sveltia-npm.tgz"
 readonly SOURCE_DIR="${WORK_DIR}/sveltia-cms-${VERSION}"
 readonly NPM_DIR="${WORK_DIR}/npm"
+readonly SVELTIA_UI_DIR="${SOURCE_DIR}/node_modules/@sveltia/ui"
 
 cleanup() {
   rm -rf -- "${WORK_DIR}"
@@ -44,8 +45,12 @@ corepack prepare "pnpm@${PNPM_VERSION}" --activate
 (
   cd "${SOURCE_DIR}"
   corepack pnpm install --frozen-lockfile
-  corepack pnpm exec vitest run src/lib/main.test.js
+  git -C "${SVELTIA_UI_DIR}" apply --check "${SCRIPT_DIR}/sveltia-ui-cursor-boundaries.patch"
+  git -C "${SVELTIA_UI_DIR}" apply "${SCRIPT_DIR}/sveltia-ui-cursor-boundaries.patch"
+  cp "${SCRIPT_DIR}/cursor-boundaries.test.js" cursor-boundaries.test.js
+  corepack pnpm exec vitest run src/lib/main.test.js cursor-boundaries.test.js
   corepack pnpm exec prettier --check \
+    cursor-boundaries.test.js \
     src/lib/components/contents/details/fields/rich-text/editor-component.svelte \
     src/lib/components/contents/details/fields/rich-text/react-editor-component-control.svelte \
     src/lib/services/contents/fields/rich-text/components/custom-node.js \
