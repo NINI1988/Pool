@@ -1,0 +1,270 @@
+media:
+  - name: uploads
+    label: Bilder und Medien
+    input: assets/uploads
+    output: /assets/uploads
+  - name: downloads
+    label: Downloads
+    input: assets/downloads
+    output: /assets/downloads
+
+settings:
+  content:
+    merge: true
+
+content:
+  - name: pages
+    label: Seiten
+    type: collection
+    path: _pages
+    format: yaml-frontmatter
+    filename:
+      template: "{primary}.md"
+      field: create
+    view:
+      fields: [title, permalink]
+      primary: title
+      sort: [title]
+      default:
+        sort: title
+        order: asc
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: description
+        label: Beschreibung
+        type: text
+        required: false
+      - name: permalink
+        label: Permalink
+        type: string
+        required: true
+        description: "Beispiel: /spielplan/"
+      - name: body
+        label: Inhalt
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true
+          media: uploads
+
+  - name: posts
+    label: News und Beiträge
+    type: collection
+    path: _posts
+    format: yaml-frontmatter
+    filename:
+      template: "{year}-{month}-{day}-{primary}.md"
+      field: create
+    view:
+      fields: [title, date, description]
+      primary: title
+      sort: [date, title]
+      search: [title, description, body]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Titel
+        type: string
+        required: true
+      - name: date
+        label: Datum
+        type: date
+        required: true
+        options:
+          time: true
+          format: "yyyy-MM-dd'T'HH:mm:ss.SSSxxx"
+      - name: description
+        label: Beschreibung
+        type: text
+        required: false
+      - name: body
+        label: Inhalt
+        type: rich-text
+        required: true
+        options:
+          format: markdown
+          switcher: true
+          media: uploads
+
+  - name: data
+    label: Daten
+    type: group
+    items:
+      - name: navigation
+        label: Navigation
+        type: file
+        path: _data/navigation.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: items
+            label: Links
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            required: false
+            fields:
+              - name: title
+                label: Titel
+                type: string
+                required: true
+              - name: url
+                label: URL
+                type: string
+                required: true
+
+      - name: club
+        label: Vereinsdaten
+        type: file
+        path: _data/club.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: name
+            label: Name
+            type: string
+            required: true
+          - name: tagline
+            label: Untertitel
+            type: string
+            required: false
+          - name: venue
+            label: Spielort
+            type: string
+            required: false
+          - name: address
+            label: Adresse
+            type: string
+            required: false
+          - name: email
+            label: E-Mail
+            type: string
+            required: false
+
+      - name: downloads
+        label: Downloads
+        type: file
+        path: _data/downloads.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: items
+            label: Downloads
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            required: false
+            fields:
+              - name: title
+                label: Titel
+                type: string
+                required: true
+              - name: file
+                label: Datei
+                type: file
+                required: true
+                options:
+                  media: downloads
+
+      - name: media
+        label: Bilder
+        type: file
+        path: _data/media.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: items
+            label: Bilder
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            required: false
+            fields:
+              - name: title
+                label: Titel
+                type: string
+                required: true
+              - name: image
+                label: Bild
+                type: image
+                required: true
+                options:
+                  media: uploads
+
+      - name: events
+        label: Termine
+        type: file
+        path: _data/events.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: items
+            label: Termine
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            required: false
+            fields:
+              - name: title
+                label: Titel
+                type: string
+                required: true
+              - name: date
+                label: Datum
+                type: date
+                required: true
+              - name: location
+                label: Ort
+                type: string
+                required: false
+
+      - name: sponsors
+        label: Sponsoren
+        type: file
+        path: _data/sponsors.yml
+        format: yaml
+        operations:
+          delete: false
+        fields:
+          - name: items
+            label: Sponsoren
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name}"
+            required: false
+            fields:
+              - name: name
+                label: Name
+                type: string
+                required: true
+              - name: url
+                label: URL
+                type: string
+                required: false
+              - name: logo
+                label: Logo
+                type: image
+                required: false
+                options:
+                  media: uploads
