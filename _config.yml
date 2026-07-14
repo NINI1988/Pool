@@ -30,6 +30,9 @@ defaults:
       layout: post
 
 exclude:
+  - Admin2/sveltia/
+  - Admin2/table-editor-core.test.js
+  - Admin2/table-editor-registration.test.js
   - README.md
   - TODO.md
   - tools/

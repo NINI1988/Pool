@@ -1,0 +1,6 @@
+{% assign asset_path = '/assets/' | relative_url %}
+{% capture asset_src %}src="{{ asset_path }}{% endcapture %}
+{% capture asset_href %}href="{{ asset_path }}{% endcapture %}
+{{ include.content
+  | replace: 'src="/assets/', asset_src
+  | replace: 'href="/assets/', asset_href }}

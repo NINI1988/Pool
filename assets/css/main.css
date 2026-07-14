@@ -234,6 +234,7 @@ h3 {
 
 .content table {
   border-collapse: collapse;
+  margin-bottom: 2rem;
 }
 
 .content th,

@@ -1,0 +1,277 @@
+--- a/src/lib/components/contents/details/fields/rich-text/editor-component.svelte
++++ b/src/lib/components/contents/details/fields/rich-text/editor-component.svelte
+@@ -8,6 +8,7 @@
+   import VisibilityObserver from '$lib/components/common/visibility-observer.svelte';
+   import FieldEditor from '$lib/components/contents/details/editor/field-editor.svelte';
+   import ObjectHeader from '$lib/components/contents/details/fields/object/object-header.svelte';
++  import ReactEditorComponentControl from '$lib/components/contents/details/fields/rich-text/react-editor-component-control.svelte';
+   import { TEMPLATE_TAG_REPLACE_REGEX } from '$lib/services/common/template/constants';
+   import { applyTransformations, parseTransformations } from '$lib/services/common/transformations';
+   import { entryDraft } from '$lib/services/contents/draft';
+@@ -20,7 +21,13 @@
+    * InternalLocaleCode,
+    * TypedFieldKeyPath,
+    * } from '$lib/types/private';
+-   * @import { EditorComponentMode, Field, FieldKeyPath, RawEntryContent } from '$lib/types/public';
++   * @import {
++   * EditorComponentControl,
++   * EditorComponentMode,
++   * Field,
++   * FieldKeyPath,
++   * RawEntryContent,
++   * } from '$lib/types/public';
+    */
+ 
+   /**
+@@ -34,6 +41,7 @@
+    * @property {string} [summary] Summary template for the placeholder text (`dialog` mode only),
+    * e.g. `{{title}}`.
+    * @property {Field[]} fields Subfield definitions.
++   * @property {EditorComponentControl} [control] Custom React control for block mode.
+    * @property {Record<string, any> | undefined} values Value map.
+    * @property {(event: CustomEvent) => void} [onChange] Custom `change` event handler.
+    */
+@@ -48,6 +56,7 @@
+     collapsed = false,
+     summary,
+     fields,
++    control,
+     values,
+     onChange = () => undefined,
+     /* eslint-enable prefer-const */
+@@ -170,6 +179,53 @@
+   };
+ 
+   /**
++   * Store values received from a custom React control in the same draft store used by regular
++   * editor component fields. This keeps serialization, undo and validation behavior centralized.
++   * @param {Record<string, any>} nextValues Updated component values.
++   */
++  const handleControlChange = (nextValues) => {
++    if (
++      !$entryDraft ||
++      !locale ||
++      !keyPath ||
++      !nextValues ||
++      typeof nextValues !== 'object' ||
++      Array.isArray(nextValues)
++    ) {
++      return;
++    }
++
++    const valuesWithComponentName = {
++      ...nextValues,
++      __sc_component_name: componentName,
++    };
++
++    const newEntries = Object.fromEntries(
++      Object.entries(flatten(valuesWithComponentName)).map(([key, value]) => [
++        `${keyPathPrefix}${key}`,
++        value,
++      ]),
++    );
++
++    entryDraft.update((_draft) => {
++      if (!_draft) {
++        return _draft;
++      }
++
++      const extraValues = _draft[valueStoreKey][locale];
++
++      Object.keys(extraValues).forEach((key) => {
++        if (key.startsWith(keyPathPrefix)) {
++          delete extraValues[key];
++        }
++      });
++
++      Object.assign(extraValues, newEntries);
++      return _draft;
++    });
++  };
++
++  /**
+    * Handle OK button click. Validates fields and only closes if valid (dialog mode only).
+    */
+   const handleOk = () => {
+@@ -507,19 +563,27 @@
+     </ObjectHeader>
+     <div role="none" class="item-list" id="object-{fieldId}-item-list">
+       {#if locale && keyPath && expanded}
+-        {#each fields as fieldConfig (fieldConfig.name)}
+-          <VisibilityObserver>
+-            <FieldEditor
+-              {locale}
+-              keyPath="{keyPathPrefix}{fieldConfig.name}"
+-              typedKeyPath="{typedKeyPathPrefix}{fieldConfig.name}"
+-              {fieldConfig}
+-              context="rich-text-editor-component"
+-              {componentName}
+-              {valueStoreKey}
+-            />
+-          </VisibilityObserver>
+-        {/each}
++        {#if control}
++          <ReactEditorComponentControl
++            {control}
++            value={currentValues ?? values ?? {}}
++            onChange={handleControlChange}
++          />
++        {:else}
++          {#each fields as fieldConfig (fieldConfig.name)}
++            <VisibilityObserver>
++              <FieldEditor
++                {locale}
++                keyPath="{keyPathPrefix}{fieldConfig.name}"
++                typedKeyPath="{typedKeyPathPrefix}{fieldConfig.name}"
++                {fieldConfig}
++                context="rich-text-editor-component"
++                {componentName}
++                {valueStoreKey}
++              />
++            </VisibilityObserver>
++          {/each}
++        {/if}
+       {/if}
+     </div>
+   </div>
+--- /dev/null
++++ b/src/lib/components/contents/details/fields/rich-text/react-editor-component-control.svelte
+@@ -0,0 +1,46 @@
++<script>
++  import { createElement } from 'react';
++  import { createRoot } from 'react-dom/client';
++  import { onMount } from 'svelte';
++
++  /**
++   * @import { EditorComponentControl } from '$lib/types/public';
++   */
++
++  /**
++   * @typedef {object} Props
++   * @property {EditorComponentControl} control React control component.
++   * @property {Record<string, any>} value Current editor component values.
++   * @property {(value: Record<string, any>) => void} onChange Change handler.
++   */
++
++  /** @type {Props} */
++  /* eslint-disable prefer-const */
++  let { control, value, onChange } = $props();
++  /* eslint-enable prefer-const */
++
++  /** @type {HTMLElement | undefined} */
++  let container = $state();
++  /** @type {import('react-dom/client').Root | undefined} */
++  let reactRoot = $state();
++
++  onMount(() => {
++    reactRoot = createRoot(/** @type {HTMLElement} */ (container));
++
++    return () => {
++      reactRoot?.unmount();
++    };
++  });
++
++  $effect(() => {
++    reactRoot?.render(createElement(control, { value, onChange }));
++  });
++</script>
++
++<div class="react-editor-component-control" bind:this={container}></div>
++
++<style>
++  .react-editor-component-control {
++    width: 100%;
++  }
++</style>
+--- a/src/lib/services/contents/fields/rich-text/components/custom-node.js
++++ b/src/lib/services/contents/fields/rich-text/components/custom-node.js
+@@ -36,6 +36,7 @@
+     mode,
+     summary,
+     fields,
++    control,
+     pattern,
+     toBlock,
+     toPreview,
+@@ -213,6 +214,7 @@
+           inline,
+           summary,
+           fields,
++          control,
+           values: this.__props,
+           onChange,
+         },
+--- a/src/lib/main.js
++++ b/src/lib/main.js
+@@ -189,6 +189,10 @@
+     throw new TypeError('The `definition.fields` must be an array');
+   }
+ 
++  if (definition.control !== undefined && typeof definition.control !== 'function') {
++    throw new TypeError('The `definition.control` must be a React component');
++  }
++
+   customComponentRegistry.set(definition.id, definition);
+ };
+ 
+--- a/src/lib/main.test.js
++++ b/src/lib/main.test.js
+@@ -414,6 +414,27 @@
+ 
+     expect(() => CMS.registerEditorComponent(definition)).not.toThrow();
+   });
++
++  test('accepts a custom React control', () => {
++    const definition = {
++      ...validDefinition,
++      control: () => null,
++    };
++
++    expect(() => CMS.registerEditorComponent(definition)).not.toThrow();
++  });
++
++  test('throws TypeError if control is not a React component', () => {
++    const definition = {
++      ...validDefinition,
++      control: 'invalid',
++    };
++
++    // @ts-ignore
++    expect(() => CMS.registerEditorComponent(definition)).toThrow(
++      'The `definition.control` must be a React component',
++    );
++  });
+ });
+ 
+ describe('CMS.registerPreviewStyle()', () => {
+--- a/src/lib/types/public.js
++++ b/src/lib/types/public.js
+@@ -1775,6 +1775,18 @@
+ 
+ /**
+- * Custom rich text editor component options.
++ * Custom rich text editor component control properties.
++ * @typedef {object} EditorComponentControlProps
++ * @property {Record<string, any>} value Current component values.
++ * @property {(value: Record<string, any>) => void} onChange Change handler.
++ */
++
++/**
++ * Custom React control rendered inside a rich text editor component.
++ * @typedef {ComponentType<EditorComponentControlProps>} EditorComponentControl
++ */
++
++/**
++ * Custom rich text editor component options.
+  * @typedef {object} EditorComponentDefinition
+  * @property {string} id Unique identifier for the component.
+  * @property {string} label Label of the component to be displayed in the editor UI.
+@@ -1788,6 +1800,8 @@
+  * @property {string} [summary] Template for the placeholder text when `mode` is `dialog`, e.g.
+  * `{{title}} - {{videoId}}`. Falls back to the first string field value, then to the label.
+  * @property {Field[]} fields Set of fields to be displayed in the component.
++ * @property {EditorComponentControl} [control] React control rendered instead of the regular field
++ * list in `block` mode. The control receives the current `value` and an `onChange` callback.
+  * @property {RegExp} pattern Regular expression to search a block from Markdown document.
+  * @property {(match: RegExpMatchArray) => Record<string, any>} [fromBlock] Function to convert the
+  * matching result to field properties. This can be omitted if the `pattern` regex contains named
