@@ -198,6 +198,7 @@
     },
 
     componentWillUnmount: function () {
+      this.setEditorElement(null);
       window.clearTimeout(this.pasteMessageTimer);
       window.clearTimeout(this.pointerSelectionTimer);
     },
@@ -345,6 +346,30 @@
       this.emitModel(core.splitSelection(this.state.model, this.state.selection));
     },
 
+    setEditorElement: function (element) {
+      if (element === this.editorElement) {
+        return;
+      }
+
+      if (this.editorElement) {
+        document.removeEventListener('paste', this.handleDocumentPaste, true);
+      }
+
+      this.editorElement = element;
+
+      if (element) {
+        document.addEventListener('paste', this.handleDocumentPaste, true);
+      }
+    },
+
+    handleDocumentPaste: function (event) {
+      if (!this.editorElement?.contains(event.target)) {
+        return;
+      }
+
+      this.handlePaste(event);
+    },
+
     handlePaste: function (event) {
       const clipboard = event.clipboardData ?? event.nativeEvent?.clipboardData;
 
@@ -354,7 +379,18 @@
 
       const html = clipboard.getData('text/html');
       const plainText = clipboard.getData('text/plain') || clipboard.getData('Text');
-      const pasted = core.parseClipboardTable(html, plainText);
+      const plainTable = core.parsePlainTextTable(plainText);
+      let pasted;
+
+      try {
+        pasted =
+          this.state.model.format === core.FORMAT_MARKDOWN && plainTable
+            ? plainTable
+            : core.parseClipboardTable(html, plainText);
+      } catch (error) {
+        console.error('Die Excel-Formatierung konnte nicht gelesen werden.', error);
+        pasted = plainTable;
+      }
 
       if (!pasted) {
         return;
@@ -551,7 +587,7 @@
 
       return h(
         'div',
-        { className: 'pte-table-scroll', onPasteCapture: this.handlePaste },
+        { className: 'pte-table-scroll' },
         h(
           'table',
           { className: 'pte-table', style: tableStyle },
@@ -632,6 +668,7 @@
         {
           className: 'pool-table-editor',
           'data-table-format': model.format,
+          ref: this.setEditorElement,
         },
         h(
           'header',
@@ -675,33 +712,49 @@
     },
   });
 
-  const emptyModel = core.createEmptyModel(core.FORMAT_MARKDOWN, 3, 3);
+  function registerTableComponent({ id, label, format, pattern }) {
+    const emptyModel = core.createEmptyModel(format, 3, 3);
 
-  CMS.registerEditorComponent({
-    id: 'editable-table',
-    label: 'Tabelle',
-    icon: 'table',
-    collapsed: false,
-    fields: [
-      { name: 'format', label: 'Format', widget: 'hidden', default: core.FORMAT_MARKDOWN },
-      {
-        name: 'data',
-        label: 'Tabellendaten',
-        widget: 'hidden',
-        default: JSON.stringify(emptyModel),
+    CMS.registerEditorComponent({
+      id,
+      label,
+      icon: 'table',
+      collapsed: false,
+      fields: [
+        { name: 'format', label: 'Format', widget: 'hidden', default: format },
+        {
+          name: 'data',
+          label: 'Tabellendaten',
+          widget: 'hidden',
+          default: JSON.stringify(emptyModel),
+        },
+      ],
+      pattern,
+      fromBlock: function (match) {
+        return core.componentValueFromSource(match[0]);
       },
-    ],
-    pattern: core.TABLE_PATTERN,
-    fromBlock: function (match) {
-      return core.componentValueFromSource(match[0]);
-    },
-    toBlock: function (value) {
-      return core.serializeTable(core.modelFromComponentValue(value));
-    },
-    toPreview: function (value) {
-      const model = core.modelFromComponentValue(value);
-      return core.serializeHtml(core.changeFormat(model, core.FORMAT_HTML));
-    },
-    control: TableControl,
+      toBlock: function (value) {
+        return core.serializeTable(core.modelFromComponentValue(value));
+      },
+      toPreview: function (value) {
+        const model = core.modelFromComponentValue(value);
+        return core.serializeHtml(core.changeFormat(model, core.FORMAT_HTML));
+      },
+      control: TableControl,
+    });
+  }
+
+  registerTableComponent({
+    id: 'editable-table',
+    label: 'Einfache Tabelle (Markdown)',
+    format: core.FORMAT_MARKDOWN,
+    pattern: core.MARKDOWN_TABLE_PATTERN,
   });
+  registerTableComponent({
+    id: 'editable-html-table',
+    label: 'Formatierte Tabelle (HTML)',
+    format: core.FORMAT_HTML,
+    pattern: core.HTML_TABLE_PATTERN,
+  });
+
 })();

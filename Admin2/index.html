@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <link href="../admin/config.yml" type="application/yaml" rel="cms-config-url">
-    <link href="./table-editor.css" rel="stylesheet">
+    <link href="./table-editor.css?v=8" rel="stylesheet">
     <title>Pool-Billard-Liga Münster Sveltia CMS</title>
   </head>
   <body>
@@ -37,14 +37,20 @@
 
         if (tableEditorAvailable) {
           try {
-            await loadScript('./table-editor-core.js');
-            await loadScript('./table-editor.js');
+            await loadScript('./table-editor-core.js?v=8');
+            await loadScript('./table-editor.js?v=8');
           } catch (error) {
             console.error(
               'Der Tabelleneditor konnte nicht registriert werden. Sveltia startet ohne ihn.',
               error,
             );
           }
+        }
+
+        try {
+          await loadScript('./site-preview.js?v=1');
+        } catch (error) {
+          console.error('Die Webseiten-Vorschau konnte nicht registriert werden.', error);
         }
 
         window.CMS.init();

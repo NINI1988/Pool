@@ -75,6 +75,8 @@
     '[ \\t]*\\|?[ \\t]*:?-+:?[ \\t]*(?:\\|[ \\t]*:?-+:?[ \\t]*)+\\|?[ \\t]*';
   const MARKDOWN_TABLE_SOURCE =
     MARKDOWN_ROW_SOURCE + '\\n' + MARKDOWN_SEPARATOR_SOURCE + '(?:\\n' + MARKDOWN_ROW_SOURCE + ')*';
+  const HTML_TABLE_PATTERN = new RegExp(HTML_TABLE_SOURCE, 'im');
+  const MARKDOWN_TABLE_PATTERN = new RegExp(MARKDOWN_TABLE_SOURCE, 'im');
   const TABLE_PATTERN = new RegExp('(?:' + HTML_TABLE_SOURCE + '|' + MARKDOWN_TABLE_SOURCE + ')', 'im');
 
   function toPositiveInteger(value, fallback) {
@@ -1388,6 +1390,8 @@
   return {
     FORMAT_HTML,
     FORMAT_MARKDOWN,
+    HTML_TABLE_PATTERN,
+    MARKDOWN_TABLE_PATTERN,
     TABLE_MODEL_VERSION,
     TABLE_PATTERN,
     SAFE_STYLE_PROPERTIES,

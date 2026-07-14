@@ -31,6 +31,7 @@ defaults:
 
 exclude:
   - Admin2/sveltia/
+  - Admin2/site-preview.test.js
   - Admin2/table-editor-core.test.js
   - Admin2/table-editor-registration.test.js
   - README.md

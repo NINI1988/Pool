@@ -34,17 +34,26 @@ function findNode(node, predicate) {
 }
 
 test('registers the table as an interactive Sveltia editor component', () => {
-  let registeredComponent;
+  const registeredComponents = [];
+  const documentListenerCalls = [];
   const context = {
     clearTimeout,
     console,
+    document: {
+      addEventListener(...args) {
+        documentListenerCalls.push(['add', ...args]);
+      },
+      removeEventListener(...args) {
+        documentListenerCalls.push(['remove', ...args]);
+      },
+    },
     setTimeout,
   };
 
   context.window = context;
   context.CMS = {
     registerEditorComponent(component) {
-      registeredComponent = component;
+      registeredComponents.push(component);
     },
   };
   context.createClass = (definition) => definition;
@@ -59,22 +68,37 @@ test('registers the table as an interactive Sveltia editor component', () => {
     context,
   );
 
-  assert.equal(registeredComponent.id, 'editable-table');
-  assert.equal(registeredComponent.label, 'Tabelle');
-  assert.equal(typeof registeredComponent.control.render, 'function');
+  const markdownComponent = registeredComponents.find(({ id }) => id === 'editable-table');
+  const htmlComponent = registeredComponents.find(({ id }) => id === 'editable-html-table');
+
+  assert.equal(registeredComponents.length, 2);
+  assert.equal(markdownComponent.label, 'Einfache Tabelle (Markdown)');
+  assert.equal(htmlComponent.label, 'Formatierte Tabelle (HTML)');
+  assert.equal(typeof markdownComponent.control.render, 'function');
 
   const source = '| A | B |\n| --- | ---: |\n| 1 | 2 |';
-  const match = source.match(registeredComponent.pattern);
-  const value = registeredComponent.fromBlock(match);
+  const match = source.match(markdownComponent.pattern);
+  const value = markdownComponent.fromBlock(match);
 
   assert.equal(value.format, 'markdown');
-  assert.equal(registeredComponent.toBlock(value), source);
-  assert.match(registeredComponent.toPreview(value), /^<table class="excel">/);
-
-  const formattedValue = registeredComponent.fromBlock(
-    '| A | B |\n| --- | --- |\n| ***Text*** | Normal |'.match(registeredComponent.pattern),
+  assert.equal(markdownComponent.toBlock(value), source);
+  assert.match(markdownComponent.toPreview(value), /^<table class="excel">/);
+  assert.equal('<table><tr><td>A</td></tr></table>'.match(markdownComponent.pattern), null);
+  assert.equal(source.match(htmlComponent.pattern), null);
+  assert.equal(
+    JSON.parse(htmlComponent.fields.find(({ name }) => name === 'data').default).format,
+    'html',
   );
-  const control = registeredComponent.control;
+  const htmlSource = '<table><tr><td>A</td><td>B</td></tr></table>';
+  const htmlValue = htmlComponent.fromBlock(htmlSource.match(htmlComponent.pattern));
+
+  assert.equal(htmlValue.format, 'html');
+  assert.match(htmlComponent.toBlock(htmlValue), /^<table class="excel">/);
+
+  const formattedValue = markdownComponent.fromBlock(
+    '| A | B |\n| --- | --- |\n| ***Text*** | Normal |'.match(markdownComponent.pattern),
+  );
+  const control = markdownComponent.control;
   const controlContext = {
     ...control,
     state: {
@@ -86,16 +110,24 @@ test('registers the table as an interactive Sveltia editor component', () => {
   const boldButton = findNode(toolbar, (node) => node.props?.['aria-label'] === 'Fett');
   const italicButton = findNode(toolbar, (node) => node.props?.['aria-label'] === 'Kursiv');
   const table = control.renderTable.call(controlContext);
-  const tableScroll = findNode(
-    table,
-    (node) => node.props?.className === 'pte-table-scroll',
-  );
   const textarea = findNode(table, (node) => node.type === 'textarea');
+  const editor = control.render.call(controlContext);
 
   assert.equal(boldButton.props['aria-pressed'], 'true');
   assert.equal(italicButton.props['aria-pressed'], 'true');
-  assert.equal(tableScroll.props.onPasteCapture, control.handlePaste);
   assert.equal(textarea.props.onPaste, undefined);
+  assert.equal(textarea.props.ref, undefined);
+  assert.equal(editor.props.ref, control.setEditorElement);
+
+  const editorElement = {};
+
+  control.setEditorElement.call(controlContext, editorElement);
+  control.setEditorElement.call(controlContext, null);
+
+  assert.deepEqual(documentListenerCalls, [
+    ['add', 'paste', control.handleDocumentPaste, true],
+    ['remove', 'paste', control.handleDocumentPaste, true],
+  ]);
 });
 
 test('intercepts a spreadsheet paste and distributes its cells', () => {
@@ -109,9 +141,10 @@ test('intercepts a spreadsheet paste and distributes its cells', () => {
   };
 
   context.window = context;
+  context.registeredComponents = [];
   context.CMS = {
     registerEditorComponent(component) {
-      context.registeredComponent = component;
+      context.registeredComponents.push(component);
     },
   };
   context.createClass = (definition) => definition;
@@ -126,7 +159,7 @@ test('intercepts a spreadsheet paste and distributes its cells', () => {
     context,
   );
 
-  const control = context.registeredComponent.control;
+  const control = context.registeredComponents.find(({ id }) => id === 'editable-table').control;
   const controlContext = {
     ...control,
     state: {
@@ -138,10 +171,22 @@ test('intercepts a spreadsheet paste and distributes its cells', () => {
       emitted = { model, selection };
     },
   };
+  const pasteTarget = {};
+
+  controlContext.editorElement = {
+    contains(target) {
+      return target === pasteTarget;
+    },
+  };
   const event = {
+    target: pasteTarget,
     clipboardData: {
       getData(type) {
-        return type === 'text/plain' ? 'A\tB\nC\tD' : '';
+        if (type === 'text/plain') {
+          return 'A\tB\nC\tD';
+        }
+
+        return type === 'text/html' ? '<table><tr><td>Falsch</td></tr></table>' : '';
       },
     },
     preventDefault() {
@@ -152,7 +197,10 @@ test('intercepts a spreadsheet paste and distributes its cells', () => {
     },
   };
 
-  control.handlePaste.call(controlContext, event);
+  control.handleDocumentPaste.call(controlContext, { target: {} });
+  assert.equal(emitted, undefined);
+
+  control.handleDocumentPaste.call(controlContext, event);
   clearTimeout(controlContext.pasteMessageTimer);
 
   assert.equal(prevented, true);
