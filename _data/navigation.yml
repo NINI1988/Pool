@@ -13,11 +13,11 @@ items:
     url: /doppelpokal/
   - title: Mannschaftspokal
     url: /mannschaftspokal/
-  - title: Mannschaftswertung
-    url: /mannschaftswertung/
   - title: Einzelwertung
     url: /einzelwertung/
   - title: Doppelwertung
     url: /doppelwertung/
+  - title: Mannschaftswertung
+    url: /mannschaftswertung/
   - title: Vorstand & Vereine
     url: /vorstand-vereine/
