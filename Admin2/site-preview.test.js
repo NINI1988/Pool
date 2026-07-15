@@ -71,3 +71,16 @@ test('uses the site stylesheet and content layout for page and post previews', (
   assert.equal(rendered.props.className, 'page-shell');
   assert.equal(content.children[0], bodyPreview);
 });
+
+test('keeps wide content tables inside their own horizontal scroll area', () => {
+  const stylesheet = fs.readFileSync(
+    path.join(__dirname, '..', 'assets', 'css', 'main.css'),
+    'utf8',
+  );
+  const tableRule = stylesheet.match(/\.content table\s*{([^}]*)}/)?.[1] ?? '';
+
+  assert.match(tableRule, /display:\s*block;/);
+  assert.match(tableRule, /width:\s*max-content;/);
+  assert.match(tableRule, /max-width:\s*100%;/);
+  assert.match(tableRule, /overflow-x:\s*auto;/);
+});
