@@ -1,7 +1,7 @@
 ---
-title: "Vorstand & Vereine"
-permalink: "/vorstand-vereine/"
-description: "Vorstand Funktion Name E-Mail Telefon 1. Vorsitzende Eva Schlüter eva.schlueter0412@gmail.com 2. Vorsitzender Manuel Wetzel manuelwetzel941@gmail.com 015779771680 Kassenwärtin Mari"
+title: Vorstand & Vereine
+description: ""
+permalink: /vorstand-vereine/
 ---
 
 ## Vorstand
