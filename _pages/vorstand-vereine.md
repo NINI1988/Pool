@@ -1,19 +1,17 @@
 ---
-title: Vorstand & Vereine
-description: ""
+title: Vorstand
+description: ''
 permalink: /vorstand-vereine/
 ---
 
-## Vorstand
-
 | **Funktion** | **Name** | **E-Mail** | **Telefon** |
-| ---- | -- | ---- | ---- |
-| **1. Vorsitzende** | Eva Schlüter | [eva.schlueter0412@gmail.com](mailto:eva.schlueter0412@gmail.com) | |
+| --- | --- | --- | --- |
+| **1. Vorsitzende** | Eva Schlüter | [eva.schlueter0412@gmail.com](mailto:eva.schlueter0412@gmail.com) |  |
 | **2. Vorsitzender** | Manuel Wetzel | [manuelwetzel941@gmail.com](mailto:manuelwetzel941@gmail.com) | 015779771680 |
-| **Kassenwärtin** | Marion Anfang | [marion.anfang@gmail.com](mailto:marion.anfang@gmail.com) | |
+| **Kassenwärtin** | Marion Anfang | [marion.anfang@gmail.com](mailto:marion.anfang@gmail.com) |  |
 | **Sportwart** | Florian Siebert | [fsiebert8@gmail.com](mailto:fsiebert8@gmail.com) | 017638212080 |
 
-## Vereine
+# Vereine
 
 ### BC 09
 
