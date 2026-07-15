@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <link href="../admin/config.yml" type="application/yaml" rel="cms-config-url">
+    <link href="./table-editor.css?v=8" rel="stylesheet">
+    <title>Pool-Billard-Liga Münster Sveltia CMS</title>
+  </head>
+  <body>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+
+      const loadScript = (source) =>
+        new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = source;
+          script.onload = resolve;
+          script.onerror = () => reject(new Error(`Skript konnte nicht geladen werden: ${source}`));
+          document.body.append(script);
+        });
+
+      const initializeCms = async () => {
+        let tableEditorAvailable = true;
+
+        try {
+          await loadScript('./sveltia-cms-table-0.170.8.js?v=3');
+        } catch (error) {
+          tableEditorAvailable = false;
+          console.warn(
+            'Der lokale Tabelleneditor-Build fehlt. Sveltia wird ohne Tabelleneditor gestartet.',
+            error,
+          );
+          await loadScript('./sveltia-cms-original-0.170.8.js');
+        }
+
+        if (tableEditorAvailable) {
+          try {
+            await loadScript('./table-editor-core.js?v=8');
+            await loadScript('./table-editor.js?v=8');
+          } catch (error) {
+            console.error(
+              'Der Tabelleneditor konnte nicht registriert werden. Sveltia startet ohne ihn.',
+              error,
+            );
+          }
+        }
+
+        try {
+          await loadScript('./site-preview.js?v=1');
+        } catch (error) {
+          console.error('Die Webseiten-Vorschau konnte nicht registriert werden.', error);
+        }
+
+        window.CMS.init();
+      };
+
+      initializeCms().catch((error) => {
+        console.error('Sveltia CMS konnte nicht gestartet werden.', error);
+      });
+    </script>
+  </body>
+</html>

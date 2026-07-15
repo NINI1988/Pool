@@ -233,13 +233,19 @@ h3 {
 }
 
 .content table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
+  margin-bottom: 2rem;
+  font-size: clamp(.75rem, 2.8vw, .9rem);
 }
 
 .content th,
 .content td {
   border: 1px solid var(--line);
-  padding: .5rem .65rem;
+  padding: .3rem .45rem;
   text-align: left;
 }
 

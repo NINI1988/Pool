@@ -1,0 +1,213 @@
+.pool-table-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 12px;
+  color: var(--sui-primary-foreground-color, #1f2937);
+  font-family: system-ui, sans-serif;
+  user-select: none;
+}
+
+.pte-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.pte-header > div {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.pte-selection-label,
+.pte-toolbar-label,
+.pte-hint,
+.pte-paste-hint {
+  color: var(--sui-secondary-foreground-color, #5f6673);
+  font-size: 12px;
+}
+
+.pte-hint,
+.pte-paste-hint {
+  margin: 0;
+}
+
+.pte-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+  border: 1px solid var(--sui-secondary-border-color, #d4d8df);
+  border-radius: 6px;
+  padding: 8px;
+  background: var(--sui-secondary-background-color, #f7f8fa);
+}
+
+.pte-toolbar-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pte-toolbar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+}
+
+.pte-button {
+  min-height: 30px;
+  border: 1px solid var(--sui-secondary-border-color, #c7ccd4);
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: inherit;
+  background: var(--sui-primary-background-color, #fff);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.pte-button:hover:not(:disabled),
+.pte-button.is-active {
+  border-color: var(--sui-primary-accent-color, #2563eb);
+  background: var(--sui-primary-accent-color-translucent, #dbeafe);
+}
+
+.pte-button.is-danger:hover:not(:disabled) {
+  border-color: #b91c1c;
+  background: #fee2e2;
+}
+
+.pte-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.pte-color-control,
+.pte-size-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 30px;
+  border: 1px solid var(--sui-secondary-border-color, #c7ccd4);
+  border-radius: 4px;
+  padding: 3px 6px;
+  background: var(--sui-primary-background-color, #fff);
+  font-size: 11px;
+}
+
+.pte-color-control input {
+  width: 26px;
+  height: 22px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+}
+
+.pte-size-control input {
+  width: 58px;
+  border: 0;
+  padding: 2px;
+  color: inherit;
+  background: transparent;
+}
+
+.pte-message {
+  border: 1px solid #93c5fd;
+  border-radius: 4px;
+  padding: 8px;
+  color: #1e3a8a;
+  background: #eff6ff;
+  font-size: 12px;
+}
+
+.pte-table-scroll {
+  overflow: auto;
+  max-width: 100%;
+  border: 1px solid var(--sui-secondary-border-color, #d4d8df);
+  background: var(--sui-primary-background-color, #fff);
+}
+
+.pte-table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  table-layout: auto;
+}
+
+.pte-cell {
+  position: relative;
+  height: 1px;
+  min-width: 40px;
+  border: 1px solid #b7bdc7;
+  padding: 0;
+  background-clip: padding-box;
+}
+
+.pte-cell.is-header {
+  box-shadow: inset 0 3px 0 var(--sui-primary-accent-color, #2563eb);
+  background-color: var(--sui-secondary-background-color, #eef1f5);
+  font-weight: 700;
+}
+
+.pte-cell.is-selected::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  box-shadow: inset 0 0 0 2px var(--sui-primary-accent-color, #2563eb);
+  pointer-events: none;
+  content: '';
+}
+
+.pte-cell textarea {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 38px;
+  resize: none;
+  border: 0;
+  padding: 8px;
+  color: inherit;
+  background: transparent;
+  font: inherit;
+  font-weight: inherit;
+  font-style: inherit;
+  text-align: inherit;
+  white-space: pre-wrap;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.pte-cell textarea:focus {
+  position: relative;
+  z-index: 3;
+  outline: 2px solid var(--sui-primary-accent-color, #2563eb);
+  outline-offset: -2px;
+}
+
+@media (max-width: 760px) {
+  .pool-table-editor {
+    padding: 8px;
+  }
+
+  .pte-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .pte-toolbar {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    overflow-x: auto;
+  }
+
+  .pte-toolbar-group {
+    flex: 0 0 auto;
+  }
+}
