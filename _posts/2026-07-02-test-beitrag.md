@@ -3,21 +3,25 @@ title: Test Beitrag
 date: 2026-07-02T15:25:00.000+02:00
 description: So ne kurze Beschreibung?
 ---
+
 Hallo zusammen. Jetzt kommt ein Bild:
 
-Jezt mal **fett** Schrift. Und *Cursiv*.
+Jezt mal **fett** Schrift. Und _Cursiv_.
 
-
-
-<table class="excel" width="460">
+<table class="excel" style="width: 460px">
+  <colgroup>
+    <col style="width: 71px">
+    <col style="width: 180px">
+    <col style="width: 209px">
+  </colgroup>
   <tr>
-    <td width="71" style="font-weight: 700">Datum</td>
-    <td width="180" style="font-weight: 700">Veranstaltungen</td>
-    <td width="209" style="font-weight: 700">Besonderheiten</td>
+    <th style="font-weight: 700">Datum</th>
+    <th style="font-weight: 700">Veranstaltungen</th>
+    <th style="font-weight: 700">Besonderheiten</th>
   </tr>
   <tr>
     <td style="text-align: right">08.07.2025</td>
-    <td style="color: windowtext; background: red">Vorstandssitzung</td>
+    <td style="background: red; color: windowtext">Vorstandssitzung</td>
     <td></td>
   </tr>
   <tr>
@@ -88,3 +92,5 @@ Jezt mal **fett** Schrift. Und *Cursiv*.
 </table>
 
 ![](/Pool/assets/uploads/test.bmp "Foto Titel")
+
+![](/assets/uploads/1000062773.jpg)
